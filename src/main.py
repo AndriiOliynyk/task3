@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from endpoint import info
 from endpoint import get_all
 from endpoint import get_new
+from endpoint import get_know
 
 
 app = FastAPI()
@@ -13,3 +14,4 @@ def read_root():
 app.include_router(info.router)
 app.include_router(get_all.router)
 app.include_router(get_new.router)
+app.include_router(get_know.router)

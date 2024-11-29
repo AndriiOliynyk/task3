@@ -9,7 +9,7 @@ from endpoint import search
 app = FastAPI()
 
 @app.get("/")
-def read_root():
+def root():
     return {"message": "Hello World"}
 
 app.include_router(info.router)

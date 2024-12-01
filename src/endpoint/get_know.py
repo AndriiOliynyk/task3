@@ -8,7 +8,7 @@ def main():
     with open("./src/1.json", "r") as f:
         data = json.load(f)
     cve = []
-
+    # перевірка чи по полі know.... є value 'Know'
     for i in data['vulnerabilities']:
         if i['knownRansomwareCampaignUse'] == 'Known':
             cve.append(i)

@@ -7,8 +7,9 @@ router = APIRouter(tags=['Last 10 CVEs'])
 def main():
     with open("./src/1.json", "r") as f:
         data = json.load(f)
-    cve = []
     
+    # тут логіка як і get/all але просто обмеження на 10 cve тобто я проходжуся по всіх але вивожу тіки 10 
+    cve = []
     for i in data['vulnerabilities']:
         cve.append(i)
         

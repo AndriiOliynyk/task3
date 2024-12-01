@@ -8,11 +8,17 @@ def all_cve():
     with open("./src/1.json", "r") as f:
         data = json.load(f)
     cve = []
-    
-    last_5_days = ["2024-11-21", "2024-11-20", "2024-11-19", "2024-11-18", "2024-11-17"]
+
+
+    days = "2024-11-"
+    all_days = [] 
+
+    for i in range(17, 22):
+        day = days + str(i)  
+        all_days.append(day) 
     
     for i in data['vulnerabilities']:
-        if i['dateAdded'] in last_5_days:
+        if i['dateAdded'] in all_days:
             cve.append(i)
         
         if len(cve) == 40:

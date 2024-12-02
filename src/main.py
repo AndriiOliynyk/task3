@@ -12,6 +12,7 @@ from endpoint import get_all_db
 from endpoint import get_new_db
 from endpoint import get_know_db
 from endpoint import search_db
+from endpoint import elastic_app2
 
 
 
@@ -28,7 +29,7 @@ app.include_router(get_all.router)
 app.include_router(get_new.router)
 app.include_router(get_know.router)
 app.include_router(search.router)
-app.include_router(elastic_app1.router)
+app.include_router(elastic_app2.router)
 app.include_router(get_all_db.router)
 app.include_router(get_new_db.router)
 app.include_router(get_know_db.router)

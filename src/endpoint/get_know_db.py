@@ -33,6 +33,6 @@ def main():
                 if vuln.get('knownRansomwareCampaignUse') == 'Known':
                     cve.append(vuln)
                     if len(cve) == 10:
-                        return cve
+                        break
 
     return cve

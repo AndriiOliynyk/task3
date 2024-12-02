@@ -7,7 +7,7 @@ from endpoint import get_all
 from endpoint import get_new
 from endpoint import get_know
 from endpoint import search
-
+from endpoint import elastic_app
 
 
 
@@ -24,3 +24,4 @@ app.include_router(get_all.router)
 app.include_router(get_new.router)
 app.include_router(get_know.router)
 app.include_router(search.router)
+app.include_router(elastic_app.router)

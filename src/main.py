@@ -8,7 +8,8 @@ from endpoint import get_new
 from endpoint import get_know
 from endpoint import search
 from endpoint import elastic_app1
-from endpoint import getall_db
+from endpoint import get_all_db
+from endpoint import get_new_db
 
 
 app = FastAPI()
@@ -25,4 +26,5 @@ app.include_router(get_new.router)
 app.include_router(get_know.router)
 app.include_router(search.router)
 app.include_router(elastic_app1.router)
-app.include_router(getall_db.router)
+app.include_router(get_all_db.router)
+app.include_router(get_new_db.router)

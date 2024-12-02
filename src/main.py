@@ -9,6 +9,7 @@ from endpoint import get_know_db
 from endpoint import search_db
 from endpoint import elastic_app
 from endpoint import elastic_raports
+from endpoint import raports
 
 
 
@@ -27,3 +28,4 @@ app.include_router(get_new_db.router)
 app.include_router(get_know_db.router)
 app.include_router(search_db.router)
 app.include_router(elastic_raports.router)
+app.include_router(raports.router)

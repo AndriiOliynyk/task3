@@ -9,7 +9,7 @@ client = Elasticsearch(
 
 router = APIRouter(tags=["raports_database"])
 
-@router.get("/raports")
+@router.get("/get/raports")
 def main():
     query = {
         "query": {

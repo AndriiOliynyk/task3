@@ -34,12 +34,11 @@ def main():
                     cve.append(vuln)
                     if len(cve) == 40:
                         return cve
-
-    # database = client.update(index="test_index2", id="test-doc2", doc={
-    # "foo": "bar",
-    # "new_field": "new value",
-    #     })
-
+                    
+    update_response = client.update(
+        index="raports_1",
+        id="raports-doc1",
+        doc={"cve_list": cve} 
+    )
     return cve
-
     

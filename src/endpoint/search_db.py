@@ -28,4 +28,11 @@ def search_cve(query: str = Query):
             for vuln in doc['vulnerabilities']:
                 if any(query.lower() in str(value).lower() for value in vuln.values()):
                     cve.append(vuln)
+    
+    update_response = client.update(
+        index="raports_1",
+        id="raports-doc1",
+        doc={"cve_list": cve} 
+    )
+
     return cve

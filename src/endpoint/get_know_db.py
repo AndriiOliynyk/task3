@@ -34,5 +34,12 @@ def main():
                     cve.append(vuln)
                     if len(cve) == 10:
                         break
+    
 
+    update_response = client.update(
+        index="raports_1",
+        id="raports-doc1",
+        doc={"cve_list": cve} 
+    )
+    
     return cve

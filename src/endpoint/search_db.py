@@ -9,8 +9,8 @@ client = Elasticsearch(
 
 router = APIRouter(tags=["critical_cve"])
 
-@router.get("/get1")
-def search_cve(query: str = Query(..., description="Ключове слово для пошуку в CVE")):
+@router.get("/get")
+def search_cve(query: str = Query):
     es_query = {
         "query": {
             "match_all": {}

@@ -9,7 +9,7 @@ client = Elasticsearch(
     verify_certs=True
 )
 
-@router.get("/get/new1")
+@router.get("/get/new")
 def main():
     # Запит до Elasticsearch
     query = {

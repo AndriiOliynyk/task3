@@ -3,16 +3,11 @@
 
 from fastapi import FastAPI
 from endpoint import info
-from endpoint import get_all
-from endpoint import get_new
-from endpoint import get_know
-from endpoint import search
-from endpoint import elastic_app1
 from endpoint import get_all_db
 from endpoint import get_new_db
 from endpoint import get_know_db
 from endpoint import search_db
-from endpoint import elastic_app2
+from endpoint import elastic_app
 
 
 
@@ -25,11 +20,7 @@ def root():
 
 """викликаю роутери"""
 app.include_router(info.router)
-app.include_router(get_all.router)
-app.include_router(get_new.router)
-app.include_router(get_know.router)
-app.include_router(search.router)
-app.include_router(elastic_app2.router)
+app.include_router(elastic_app.router)
 app.include_router(get_all_db.router)
 app.include_router(get_new_db.router)
 app.include_router(get_know_db.router)

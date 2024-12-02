@@ -35,4 +35,11 @@ def main():
                     if len(cve) == 40:
                         return cve
 
+    # database = client.update(index="test_index2", id="test-doc2", doc={
+    # "foo": "bar",
+    # "new_field": "new value",
+    #     })
+
     return cve
+
+    

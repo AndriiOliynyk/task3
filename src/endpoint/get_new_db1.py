@@ -14,7 +14,16 @@ def main():
     response = client.search(
         index="test_index5",
         body={
-            "query": {"match_all": {}}, 
+            "query": {
+                "bool": {
+                    "must": [
+                        {"match_all": {}}
+                    ],
+                    "filter": [
+                        {"term": {"knownRansomwareCampaignUse": "Known"}}  
+                    ]
+                }
+            },
             "size": 10,
             "sort": [
                 {"dateAdded": {"order": "desc"}} 
@@ -23,7 +32,6 @@ def main():
     )
 
     results = [doc['_source'] for doc in response['hits']['hits']]
-
     update_response = client.update(
         index="raports_1",
         id="raports-doc1",

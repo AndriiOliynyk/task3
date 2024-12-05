@@ -14,7 +14,9 @@ def main():
     response = client.search(
         index="test_index5",
         body={
-            "query": {"term": {"knownRansomwareCampaignUse.keyword": "Known"}},
+            "query": {"term": 
+                        {"knownRansomwareCampaignUse.keyword": "Known"}
+                    },
             "size": 10
         }
     )

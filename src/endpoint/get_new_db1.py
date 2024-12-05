@@ -19,9 +19,6 @@ def main():
                     "must": [
                         {"match_all": {}}
                     ],
-                    "filter": [
-                        {"term": {"knownRansomwareCampaignUse": "Known"}}  
-                    ]
                 }
             },
             "size": 10,

@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from elasticsearch import Elasticsearch
 
-router = APIRouter(tags=["Має виводити CVE в яких knownRansomwareCampaignUse - Known, максимум 10"])
+router = APIRouter(tags=["Останні 10"])
 
 client = Elasticsearch(
     "https://e060d5b03e824ef4b2ac8d3b655d5ae4.us-central1.gcp.cloud.es.io:443",
@@ -11,35 +11,20 @@ client = Elasticsearch(
 
 @router.get("/get/know")
 def main():
-    # Запит до Elasticsearch
-    query = {
-        "query": {
-            "match_all": {}
+    response = client.search(
+        index="test_index5",
+        body={
+            "query": {"term": {"knownRansomwareCampaignUse.keyword": "Known"}},
+            "size": 10
         }
-    }
+    )
 
-    response = client.search(index="test_index2", body=query)
-
-    # Отримання документів
     results = [doc['_source'] for doc in response['hits']['hits']]
-
-    cve = []
-
-    # Логіка перевірки поля `knownRansomwareCampaignUse`
-    for doc in results:
-        if 'vulnerabilities' in doc:
-            for vuln in doc['vulnerabilities']:
-                print("Checking:", vuln.get('knownRansomwareCampaignUse'))
-                if vuln.get('knownRansomwareCampaignUse') == 'Known':
-                    cve.append(vuln)
-                    if len(cve) == 10:
-                        break
-    
 
     update_response = client.update(
         index="raports_1",
         id="raports-doc1",
-        doc={"cve_list": cve} 
+        doc={"cve_list": results} 
     )
-    
-    return cve
+
+    return results

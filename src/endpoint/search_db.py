@@ -11,7 +11,6 @@ router = APIRouter(tags=["critical_cve"])
 
 @router.get("/get")
 def search_cve(query: str = Query(..., description="Search query for CVE")):
-    # Запит на пошук в Elasticsearch
     body={
             "query": {
                 "multi_match": {
@@ -20,21 +19,17 @@ def search_cve(query: str = Query(..., description="Search query for CVE")):
                 }
             }
         }
-
-    # Виконання запиту
+    
     response = client.search(index="test_index5", body=body)
 
-    # Отримання результатів
     results = [doc['_source'] for doc in response['hits']['hits']]
 
-    # Збір вразливостей
     cve = []
     for doc in results:
         if 'vulnerabilities' in doc:  
             for vuln in doc['vulnerabilities']:
                 cve.append(vuln)
 
-    # Оновлення результатів у іншому індексі (якщо потрібно)
     update_response = client.update(
         index="raports_1",
         id="raports-doc1",
